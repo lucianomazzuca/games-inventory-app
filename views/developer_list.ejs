@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/game_list.css' />
+  </head>
+  <body>
+
+    <%- include('partials/nav'); %>   
+    
+    <h1><%= title %></h1>
+    
+    <ul>
+        <% developers.forEach(developer => { %>
+            <li><a href="<%= developer.url %> "><%= developer.name %></a></li>
+        <% }) %>
+    </ul>
+
+  </body>
+</html>

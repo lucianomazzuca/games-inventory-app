@@ -11,14 +11,11 @@ if (!userArgs[0].startsWith('mongodb')) {
 }
 */
 const async = require('async')
-const Book = require('./models/book')
-const Author = require('./models/author')
+const Game = require('./models/game')
+const Developer = require('./models/developer')
 const Genre = require('./models/genre')
-const BookInstance = require('./models/bookinstance')
-
 
 const mongoose = require('mongoose');
-const Game = require('./models/game');
 const mongoDB = userArgs[0];
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
@@ -29,7 +26,7 @@ let developers = []
 let genres = []
 let games = []
 
-function developerCreate(name) {
+function developerCreate(name, cb) {
     const developerDetail = {name: name};
 
     const developer = new Developer(developerDetail);
@@ -80,23 +77,23 @@ function gameCreate(title, description, price, release, stock, genre, developer,
         }
         console.log('New Game: ' + game);
         games.push(game)
-        cb(null, book)
+        cb(null, game)
     })
 }
 
 function createGenreDevelopers(cb) {
     async.series([
         function(callback) {
-            developerCreate('Ubisoft')
+            developerCreate('Ubisoft', callback)
         },
         function(callback) {
-            developerCreate('CD Projekt Red')
+            developerCreate('CD Projekt Red', callback)
         },
         function(callback) {
-            developerCreate('Rockstar')
+            developerCreate('Rockstar', callback)
         },
         function(callback) {
-            developerCreate('EA Vancouver')
+            developerCreate('EA Vancouver', callback)
         },
         function(callback) {
             genreCreate('Action', callback)
@@ -119,7 +116,8 @@ function createGames(cb) {
         function(callback) {
             gameCreate('Test 2', 'Test description', 40, 2019, 5, [genres[0]], developers[1], callback)
         }
-    ])
+    ],
+    cb)
 }
 
 async.series([

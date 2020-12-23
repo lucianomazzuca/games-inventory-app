@@ -10,7 +10,7 @@ const developerSchema = new mongoose.Schema({
 
 // Virtual url
 developerSchema.virtual('url').get(function() {
-    return `/inventory/developer/${this._id}` 
+    return `/developer/${this._id}` 
 })
 
 

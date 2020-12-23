@@ -37,7 +37,7 @@ const gameSchema = new Schema({
 
 // Virtuals
 gameSchema.virtual('url').get(function() {
-    return `/inventory/game/${this._id}`
+    return `/games/${this._id}`
 })
 
 // Model

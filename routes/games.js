@@ -3,6 +3,14 @@ const router = express.Router();
 
 const gamesController = require('../controllers/gameController');
 
-router.get('/', gamesController.index)
+// Index route: list all games
+router.get('/', gamesController.index);
+
+// Add new game
+router.get('/add', gamesController.add_get);
+
+
+// Get: Detail of one game
+router.get('/:id', gamesController.detail);
 
 module.exports = router;
