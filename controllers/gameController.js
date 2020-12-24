@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 module.exports = {
     index: async (req, res, next) => {
+        // List All games
         const games = await Game.find().populate("genre").populate("developer");
 
         res.render("game_list", {
@@ -13,6 +14,7 @@ module.exports = {
         });
     },
     detail: async (req, res) => {
+        // Find and send game by id with populated attributes
         const game = await Game.findById(req.params.id).populate("genre").populate("developer");
         
         res.render('game_detail', {
@@ -21,6 +23,7 @@ module.exports = {
         })
     },
     add_get: (req, res) => {
+        // Find and send all developers and genres sorted
         const developers = Developer.find().sort('name');
         const genres = Genre.find().sort('name');
         
@@ -67,19 +70,27 @@ module.exports = {
         })
     },
     update_put: async (req, res) => {
-            let game = await Game.findById(req.params.id)
-            game.title = req.body.title 
-            game.description = req.body.description 
-            game.price = Number(req.body.price)
-            game.release = Number(req.body.release)
-            game.stock = Number(req.body.stock)
-            game.developer = req.body.developer 
-            game.genre = req.body.genre 
+        // Find game by id and update each attribute
+        let game = await Game.findById(req.params.id)
+        game.title = req.body.title 
+        game.description = req.body.description 
+        game.price = Number(req.body.price)
+        game.release = Number(req.body.release)
+        game.stock = Number(req.body.stock)
+        game.developer = req.body.developer 
+        game.genre = req.body.genre 
 
-            game.save(function(err) {
-                if (err) console.log(err)
+        game.save(function(err) {
+            if (err) console.log(err)
 
-                res.redirect('/games/' + game._id)
-            })
-        }
+            res.redirect('/games/' + game._id)
+        })
+    },
+    delete: (req, res) => {
+        Game.findByIdAndDelete(req.params.id)
+        .then((result) => {
+            res.redirect('/games');
+
+        })
+    }
 }

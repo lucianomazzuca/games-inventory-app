@@ -14,6 +14,9 @@ router.post('/add', gamesController.add_post);
 router.get('/update/:id', gamesController.update_get);
 router.put('/update/:id', gamesController.update_put);
 
+// Delete game
+router.delete('/delete/:id', gamesController.delete);
+
 // Get: Detail of one game
 router.get('/:id', gamesController.detail);
 

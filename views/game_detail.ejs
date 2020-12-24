@@ -26,5 +26,9 @@
   
     <a href="/games/update/<%= game._id %>">Update</a>
 
+    <form action="/games/delete/<%= game._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+
   </body>
 </html>
