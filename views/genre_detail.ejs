@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+  </head>
+  <body>
+
+    <%- include('partials/nav'); %>   
+    
+    <h1><%= title %></h1>
+    
+    <h3>Games:</h3>
+    <ul>
+        <% games.forEach(game => { %>
+            <li><a href="<%= game.url %>"><%= game.title %></a></li>
+        <% }) %>
+    </ul>
+
+
+    <a href="/genre/update/<%= genre._id %>">Update</a>
+
+    <form action="/genres/delete/<%= genre._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+    
+  </body>
+</html>
