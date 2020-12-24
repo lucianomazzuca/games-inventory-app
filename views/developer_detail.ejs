@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+  </head>
+  <body>
+
+    <%- include('partials/nav'); %>   
+    
+    <h1><%= title %></h1>
+    
+    <h3>Games:</h3>
+
+    <ul>
+        <% games.forEach(game => { %>
+            <li><a href="<%= game.url %>"><%= game.title %></a></li>
+        <% }) %>
+    </ul>
+
+    <a href="/developers/update/<%= developer._id %>">Update</a>
+  </body>
+</html>

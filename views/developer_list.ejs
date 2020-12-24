@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/game_list.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
 
@@ -12,9 +12,11 @@
     
     <ul>
         <% developers.forEach(developer => { %>
-            <li><a href="<%= developer.url %> "><%= developer.name %></a></li>
+            <li><a href="<%= developer.url %>"><%= developer.name %></a></li>
         <% }) %>
     </ul>
+
+    <a href="/developers/add">Add new</a>
 
   </body>
 </html>
