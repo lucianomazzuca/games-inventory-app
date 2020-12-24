@@ -49,5 +49,37 @@ module.exports = {
             res.redirect('/games')
         })
 
-    }
-};
+    },
+    update_get: (req, res) => {
+        const game = Game.findById(req.params.id);
+        const developers = Developer.find().sort('name');
+        const genres = Genre.find().sort('name');
+        
+        Promise.all([game, developers, genres])
+        .then((data) => {
+            res.render('game_update', {
+                title: 'Update Game',
+                game: data[0],
+                developers: data[1],
+                genres: data[2]
+            })
+        
+        })
+    },
+    update_put: async (req, res) => {
+            let game = await Game.findById(req.params.id)
+            game.title = req.body.title 
+            game.description = req.body.description 
+            game.price = Number(req.body.price)
+            game.release = Number(req.body.release)
+            game.stock = Number(req.body.stock)
+            game.developer = req.body.developer 
+            game.genre = req.body.genre 
+
+            game.save(function(err) {
+                if (err) console.log(err)
+
+                res.redirect('/games/' + game._id)
+            })
+        }
+}

@@ -10,6 +10,10 @@ router.get('/', gamesController.index);
 router.get('/add', gamesController.add_get);
 router.post('/add', gamesController.add_post);
 
+// Update game
+router.get('/update/:id', gamesController.update_get);
+router.put('/update/:id', gamesController.update_put);
+
 // Get: Detail of one game
 router.get('/:id', gamesController.detail);
 
