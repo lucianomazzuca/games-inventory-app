@@ -49,5 +49,10 @@ module.exports = {
         await developer.save();
 
         res.redirect(developer.url)
+    },
+    delete: async (req, res) => {
+        await Developer.findByIdAndDelete(req.params.id);
+
+        res.redirect('/developers')
     }
 }

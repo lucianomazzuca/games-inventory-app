@@ -14,6 +14,9 @@ router.post('/add', developerController.add_post);
 router.get('/update/:id', developerController.update_get);
 router.put('/update/:id', developerController.update_put);
 
+// Delete developer
+router.delete('/delete/:id', developerController.delete)
+
 // Show details of one developer
 router.get('/:id', developerController.detail)
 
