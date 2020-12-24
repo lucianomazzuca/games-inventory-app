@@ -31,7 +31,7 @@ const gameSchema = new Schema({
     ],
     developer: {
         type: Schema.Types.ObjectId,
-        ref: 'Developer'
+        ref: 'Developer',
     }
 });
 

@@ -1,6 +1,7 @@
 const Game = require("../models/game");
 const Genre = require("../models/genre");
 const Developer = require("../models/developer");
+const mongoose = require("mongoose");
 
 module.exports = {
     index: async (req, res, next) => {
@@ -20,8 +21,33 @@ module.exports = {
         })
     },
     add_get: (req, res) => {
-        res.render('game_add', {
-            title: 'Add New Game'
+        const developers = Developer.find().sort('name');
+        const genres = Genre.find().sort('name');
+        
+        Promise.all([developers, genres])
+        .then((data) => {
+            res.render('game_add', {
+                title: 'Add New Game',
+                developers: data[0],
+                genres: data[1],
+            })
         })
+    },
+    add_post: (req, res) => {
+        const game = new Game({
+            title: req.body.title,
+            description: req.body.description,
+            price: Number(req.body.price),
+            release: Number(req.body.release),
+            stock: Number(req.body.stock),
+            developer: req.body.developer,
+            genre: req.body.genre
+        })
+
+        game.save(function(err) {
+            if (err) console.log(err);
+            res.redirect('/games')
+        })
+
     }
 };

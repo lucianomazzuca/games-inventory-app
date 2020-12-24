@@ -8,7 +8,7 @@ router.get('/', gamesController.index);
 
 // Add new game
 router.get('/add', gamesController.add_get);
-
+router.post('/add', gamesController.add_post);
 
 // Get: Detail of one game
 router.get('/:id', gamesController.detail);

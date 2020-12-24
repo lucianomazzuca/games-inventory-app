@@ -33,13 +33,28 @@
             <input type="text" name="stock">
         </div>
         <div class="form-group">
-            <label for="genre">genre</label>
-            <input type="text" name="genre">
-        </div>
-        <div class="form-group">
             <label for="developer">developer</label>
-            <input type="text" name="developer">
+            <select name="developer" id="developer">
+                <% developers.forEach(developer => { %>
+                    <option value="<%= developer._id %>"><%= developer.name %></option>
+                <% }) %>
+            </select>
         </div>
+
+        <p>genre</p>
+        <div class="select-group">
+            <% genres.forEach(genre => { %>
+                <input 
+                    type="checkbox" 
+                    id="<%= genre.name %>" 
+                    name="genre" 
+                    value="<%= genre._id %>"
+                >
+                <label for="<%= genre.name %>"><%= genre.name %></label>
+            <% }) %>
+        </div>
+
+        <button type="submit">Add</button>
     </form>
 
   </body>
