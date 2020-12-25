@@ -18,5 +18,13 @@ module.exports = {
             genre,
             games
         })
+    },
+    add_get: (req, res) => {
+        res.render('genre_add', {
+            title: 'Add New Genre'
+        })
+    },
+    add_post: (req, res) => {
+        
     }
 }
