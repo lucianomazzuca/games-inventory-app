@@ -49,5 +49,10 @@ module.exports = {
         await genre.save();
 
         res.redirect('/genres')
+    },
+    delete: async (req, res) => {
+        await Genre.findByIdAndDelete(req.params.id);
+
+        res.redirect('/genres');
     }
 }
