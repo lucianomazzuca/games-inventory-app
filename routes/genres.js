@@ -10,6 +10,10 @@ router.get('/', genreController.index)
 router.get('/add', genreController.add_get);
 router.post('/add', genreController.add_post);
 
+// Update genre
+router.get('/update/:id', genreController.update_get);
+router.put('/update/:id', genreController.update_put);
+
 // Detail of genre
 router.get('/:id', genreController.detail);
 

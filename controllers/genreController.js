@@ -24,7 +24,30 @@ module.exports = {
             title: 'Add New Genre'
         })
     },
-    add_post: (req, res) => {
+    add_post: async (req, res) => {
+        let genre = new Genre({
+            name: req.body.name
+        })
+
+        await genre.save();
+
+        res.redirect(genre.url)
+    },
+    update_get: async (req, res) => {
+        const genre = await Genre.findById(req.params.id);
+
+        res.render('genre_update', {
+            title: 'Update Genre',
+            genre
+        })
         
+    },
+    update_put: async (req, res) => {
+        let genre = await Genre.findById(req.params.id);
+        genre.name = req.body.name,
+
+        await genre.save();
+
+        res.redirect('/genres')
     }
 }
