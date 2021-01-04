@@ -23,6 +23,9 @@ const gameSchema = new Schema({
         type: Number,
         required: true
     },
+    image: {
+        type: String,
+    },
     genre: [
         {
             type: Schema.Types.ObjectId,

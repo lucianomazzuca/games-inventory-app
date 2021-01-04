@@ -15,6 +15,6 @@
 }
 
 .form-group {
-    @apply flex flex-col mb-4
+    @apply flex flex-col mb-4 
 }
 

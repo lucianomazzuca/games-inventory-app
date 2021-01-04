@@ -9,15 +9,15 @@
     <%- include('partials/nav'); %>   
 
     
-    <div class="wrapper">
-        <h1 class="font-semibold text-2xl my-4"><%= title %></h1>
+    <div class="wrapper flex flex-col items-center">
+        <h1 class="font-semibold text-2xl my-4 text-left "><%= title %></h1>
         
         <form action="/games/update/<%= game._id %>?_method=PUT" 
             method="POST" 
             enctype="multipart/form-data"
-            class="max-w-xl"
+            class="w-full max-w-xl"
             >
-            <div class="form-group flex flex-col mb-4">
+            <div class="form-group">
                 <label for="title">Title</label>
                 <input 
                     type="text"
@@ -26,6 +26,17 @@
                     class="input "
                 >
             </div>
+
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input 
+                    type="file"
+                    name="image"
+                    value=<%= typeof game != 'undefined' ? game.image : '' %>
+                    class="input "
+                >
+            </div>
+
             <div class="form-group flex flex-col">
                 <label for="description">Description</label>
                 <textarea  

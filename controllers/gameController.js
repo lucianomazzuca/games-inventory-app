@@ -37,6 +37,7 @@ module.exports = {
         })
     },
     add_post: (req, res) => {
+
         const game = new Game({
             title: req.body.title,
             description: req.body.description,
@@ -44,7 +45,8 @@ module.exports = {
             release: Number(req.body.release),
             stock: Number(req.body.stock),
             developer: req.body.developer,
-            genre: req.body.genre
+            genre: req.body.genre,
+            image: req.files[0].filename
         })
 
         game.save(function(err) {
@@ -79,6 +81,9 @@ module.exports = {
         game.stock = Number(req.body.stock)
         game.developer = req.body.developer 
         game.genre = req.body.genre 
+        game.image = req.body.image
+
+        res.send(game)
 
         game.save(function(err) {
             if (err) console.log(err)
