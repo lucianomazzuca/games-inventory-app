@@ -4,7 +4,7 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/tailwind.css' />
   </head>
-  <body>
+  <body class="bg-gray-100">
 
     <%- include('partials/nav'); %>   
 
@@ -17,7 +17,11 @@
 
           <% games.forEach(game => { %>
             <div class="flex flex-col bg-white rounded shadow-md overflow-hidden max-w-4xl cursor hover:shadow-lg">
-              <img src="images/cyberpunk.jpg" alt="" srcset="" class="w-full h-48">
+              <% if (game.image) { %>
+                <img src="/images/games/<%= game.image %>" alt="" srcset="" class="w-full h-48">
+              <% } else {%>
+                <img src="/images/games/default.jpg" alt="" srcset="" class="w-full h-48">
+              <% } %> 
               <div class="px-4 py-2 flex flex-col justify-evenly h-40">
                   <span class="font-semibold text-lg h-10 flex-auto"><%= game.title %></span>
                   <span class="text-lg flex-auto">$60</span>

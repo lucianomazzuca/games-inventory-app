@@ -12,8 +12,11 @@
     <div class="wrapper">
       <h1 class="text-3xl font-semibold text-gray-900 my-4"><%- title %></h1>
 
-      <img src="/images/games/<%= game.image %>" alt="" srcset="" class="h-72 w-52">
-      
+      <% if (game.image) { %>
+        <img src="/images/games/<%= game.image %>" alt="" srcset="" class="w-52 h-64">
+      <% } else {%>
+        <img src="/images/games/default.jpg" alt="" srcset="" class="w-52 h-64">
+      <% } %>       
       <h3>Description: <%= game.description %> </h3>
       <h3>Price: <%= game.price %> </h3>
       <h3>Stock: <%= game.stock %> </h3>
