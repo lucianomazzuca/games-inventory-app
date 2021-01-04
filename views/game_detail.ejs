@@ -2,34 +2,40 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/game_list.css' />
+    <link rel='stylesheet' href='/stylesheets/tailwind.css' />
     
   </head>
   <body>
 
     <%- include('partials/nav'); %>   
 
-    <h1><%- title %></h1>
-    
-    <h3>Description: <%= game.description %> </h3>
-    <h3>Price: <%= game.price %> </h3>
-    <h3>Stock: <%= game.stock %> </h3>
-    <h3>Release: </h3><%= game.release %> </h3>
-    <h3>Developer: </h3><%= game.developer.name %> </h3>
-    <h3>
-        Genre: 
-        <ul>
-            <% game.genre.forEach(genre => { %>
-                <li><%= genre.name %> </li>
-            <% }) %>
-        </ul>
-    </h3>
-  
-    <a href="/games/update/<%= game._id %>">Update</a>
+    <div class="wrapper">
+      <h1 class="text-3xl font-semibold text-gray-900 my-4"><%- title %></h1>
 
-    <form action="/games/delete/<%= game._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete</button>
-    </form>
+      <img src="/images/cyberpunk.jpg" alt="" srcset="" class="h-72 w-52">
+      
+      <h3>Description: <%= game.description %> </h3>
+      <h3>Price: <%= game.price %> </h3>
+      <h3>Stock: <%= game.stock %> </h3>
+      <h3>Release: </h3><%= game.release %> </h3>
+      <h3>Developer: </h3><%= game.developer.name %> </h3>
+      <h3>
+          Genre: 
+          <ul>
+              <% game.genre.forEach(genre => { %>
+                  <li><%= genre.name %> </li>
+              <% }) %>
+          </ul>
+      </h3>
+    
+      <a href="/games/update/<%= game._id %>">Update</a>
+
+      <form action="/games/delete/<%= game._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+      </form>
+
+    </div>
+
 
   </body>
 </html>

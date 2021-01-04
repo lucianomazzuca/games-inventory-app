@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const upload = multer();
 
 const gamesController = require('../controllers/gameController');
 
@@ -12,7 +14,7 @@ router.post('/add', gamesController.add_post);
 
 // Update game
 router.get('/update/:id', gamesController.update_get);
-router.put('/update/:id', gamesController.update_put);
+router.put('/update/:id', upload.none(),gamesController.update_put);
 
 // Delete game
 router.delete('/delete/:id', gamesController.delete);

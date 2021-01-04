@@ -1,39 +1,20 @@
-body {
-  padding: 30px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.wrapper {
+    @apply container mx-auto px-4 lg:max-w-screen-lg
 }
 
-a {
-  color: #00B7FF;
+.btn {
+    @apply text-white rounded px-4 py-2
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
+.input {
+    @apply border border-gray-400 rounded px-2 py-1 mt-1 focus:ring focus:outline-none
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
+    @apply flex flex-col mb-4
 }
 
-input {
-  height: 25px;
-  margin-top: 5px;
-}
-
-textarea, select {
-  margin-top: 5px;
-  min-height: 30px;
-}
-
-.select-group {
-  display: flex;
-  align-items: center;
-}
-
-.select-group > label {
-  margin-right: 15px;
-}
