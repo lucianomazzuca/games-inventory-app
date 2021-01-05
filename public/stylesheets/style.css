@@ -18,3 +18,11 @@
     @apply flex flex-col mb-4 
 }
 
+.title {
+    @apply text-4xl font-semibold text-gray-900 py-4
+}
+
+.subtitle {
+    @apply text-lg font-semibold text-gray-900 border-b border-gray-300
+}
+

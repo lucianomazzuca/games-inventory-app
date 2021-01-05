@@ -5,37 +5,75 @@
     <link rel='stylesheet' href='/stylesheets/tailwind.css' />
     
   </head>
-  <body>
+  <body class="bg-gray-100 min-h-screen">
 
     <%- include('partials/nav'); %>   
 
-    <div class="wrapper">
-      <h1 class="text-3xl font-semibold text-gray-900 my-4"><%- title %></h1>
+    <div class="wrapper bg-white shadow min-h-screen">
+      <h1 class="title"><%- title %></h1>
 
-      <% if (game.image) { %>
-        <img src="/images/games/<%= game.image %>" alt="" srcset="" class="w-52 h-64">
-      <% } else {%>
-        <img src="/images/games/default.jpg" alt="" srcset="" class="w-52 h-64">
-      <% } %>       
-      <h3>Description: <%= game.description %> </h3>
-      <h3>Price: <%= game.price %> </h3>
-      <h3>Stock: <%= game.stock %> </h3>
-      <h3>Release: </h3><%= game.release %> </h3>
-      <h3>Developer: </h3><%= game.developer.name %> </h3>
-      <h3>
-          Genre: 
-          <ul>
-              <% game.genre.forEach(genre => { %>
-                  <li><%= genre.name %> </li>
-              <% }) %>
-          </ul>
-      </h3>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="max-h-96 max-w-full rounded overflow-hidden">
+          <% if (game.image) { %>
+            <img src="/images/games/<%= game.image %>" alt="cover" srcset="" class="overflow-hidden w-full object-cover">
+          <% } else {%>
+            <img src="/images/games/default.jpg" alt="cover" srcset="" class="overflow-hidden w-full object-cover">
+          <% } %>     
+        </div>  
+  
+        <div class="col-span-2">
+          <h4 class="subtitle">Description</h4>
+          <p class="mt-2">
+            <%= game.description %> 
+          </p>
+        </div>
+      
+
+        <div>
+          <h4 class="subtitle">Price</h4> 
+          <p class="mt-1">
+            <%= game.price %> 
+          </p>
+        </div>
+
+        <div>
+          <h4 class="subtitle">Stock</h4>
+          <p>
+            <%= game.stock %>
+          </p>
+        </div>
+
+        <div>
+          <h4 class="subtitle">Release</h4>
+          <p>
+            <%= game.release %>
+          </p>
+        </div>
+
+        <div>
+        	<h4 class="subtitle">Developer</h4>
+        	<p>
+        	  <%= game.developer.name %>
+        	</p>
+        </div>
+
+        <div>
+          <h4 class="subtitle">Genre </h4>
+            <ul class="flex space-x-5">
+                <% game.genre.forEach(genre => { %>
+                    <li><%= genre.name %> </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
     
-      <a href="/games/update/<%= game._id %>">Update</a>
-
-      <form action="/games/delete/<%= game._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-      </form>
+      <div class="flex space-x-10 mt-10">
+        <a href="/games/update/<%= game._id %>" class="btn bg-indigo-500">Update</a>
+  
+        <form action="/games/delete/<%= game._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="btn bg-red-600">Delete</button>
+        </form>
+      </div>
 
     </div>
 

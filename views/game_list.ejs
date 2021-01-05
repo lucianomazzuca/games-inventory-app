@@ -12,6 +12,14 @@
 
       <h1 class="my-4 text-xl"><%= title %></h1>
 
+      <a href="/games/add" class="mb-4">
+        <div class="text-white rounded-full px-1 py-1 bg-indigo-600 inline-block mb-4 shadow-md hover:bg-indigo-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+        </div>
+      </a>
+
       <div class="grid grid-cols-fit-items gap-3">
           <!-- Game Cards go here -->
 
@@ -32,26 +40,13 @@
           </div>
         <% }) %>
 
-          <div class="bg-white rounded shadow-md max-w-4xl cursor hover:shadow-lg">
-              <img src="images/cyberpunk.jpg" alt="" srcset="" class="w-full h-48">
-              <div class="px-4 py-2 flex flex-col flex-grow">
-                  <span class="font-semibold text-lg">Cyberpunk 2077</span>
-                  <span class=" text-lg ">$60</span>
-                  <div class="my-4">
-                      <a href="" class="btn bg-indigo-500 hover:bg-indigo-400">
-                        Details
-                      </a>
-                  </div>
-              </div>
-          </div>
-
 
       </div>
       
   </main>
 
 
-  <a href="/games/add">Add New</a>
+
 
   <script src="javascripts/dropdown.js"></script>
 

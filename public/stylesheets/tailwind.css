@@ -31260,6 +31260,27 @@ video {
   margin-bottom: 1rem
 }
 
+.title {
+  font-weight: 600;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  --tw-text-opacity: 1;
+  color: rgba(17, 24, 39, var(--tw-text-opacity))
+}
+
+.subtitle {
+  --tw-border-opacity: 1;
+  border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+  border-bottom-width: 1px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(17, 24, 39, var(--tw-text-opacity))
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

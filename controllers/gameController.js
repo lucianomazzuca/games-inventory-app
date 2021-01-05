@@ -81,7 +81,7 @@ module.exports = {
         game.stock = Number(req.body.stock)
         game.developer = req.body.developer 
         game.genre = req.body.genre 
-        game.image = req.files[0].filename || game.image
+        game.image = req.files[0] ? req.files[0].filename : game.image
 
         game.save(function(err) {
             if (err) console.log(err)
