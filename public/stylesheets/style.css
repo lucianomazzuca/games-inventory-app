@@ -7,7 +7,7 @@
 }
 
 .btn {
-    @apply text-white rounded px-4 py-2
+    @apply text-white rounded px-3 py-1
 }
 
 .input {

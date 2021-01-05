@@ -2,22 +2,25 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/tailwind.css' />
   </head>
   <body>
 
     <%- include('partials/nav'); %>   
-    
-    <h1><%= title %></h1>
-    
-    <form action="/genres/add" method="POST">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name">
-        </div>
 
-        <button type="submit">Submit</button>
-    </form>
+    <div class="wrapper flex flex-col items-center">
+
+      <h1 class="font-semibold text-2xl my-4 text-left "><%= title %></h1>
+      
+      <form action="/genres/add" method="POST" class="w-full max-w-xl">
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="input">
+          </div>
+  
+          <button type="submit" class="btn bg-green-500 hover:bg-green-600 mt-4">Submit</button>
+      </form>
+    </div>
 
   </body>
 </html>

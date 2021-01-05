@@ -2,21 +2,32 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/tailwind.css' />
   </head>
   <body>
 
     <%- include('partials/nav'); %>   
     
-    <h1><%= title %></h1>
-    
-    <ul>
-        <% developers.forEach(developer => { %>
-            <li><a href="<%= developer.url %>"><%= developer.name %></a></li>
-        <% }) %>
-    </ul>
+    <div class="wrapper">
+      <h1 class="title"><%= title %></h1>
 
-    <a href="/developers/add">Add new</a>
+      <a href="/developers/add" class="mb-4">
+        <div class="text-white rounded-full px-1 py-1 bg-indigo-600 inline-block mb-4 shadow-md hover:bg-indigo-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+        </div>
+      </a>
+      
+      <ul>
+          <% developers.forEach(developer => { %>
+              <li><a href="<%= developer.url %>"><%= developer.name %></a></li>
+          <% }) %>
+      </ul>
+
+      
+  
+    </div>
 
   </body>
 </html>
