@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path')
+const gameValidator = require('../validations/gameValidator');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -21,11 +22,11 @@ router.get('/', gamesController.index);
 
 // Add new game
 router.get('/add', gamesController.add_get);
-router.post('/add', upload.any(),gamesController.add_post);
+router.post('/add', upload.any(), gameValidator, gamesController.add_post);
 
 // Update game
 router.get('/update/:id', gamesController.update_get);
-router.put('/update/:id', upload.any(),gamesController.update_put);
+router.put('/update/:id', gameValidator, upload.any(), gamesController.update_put);
 
 // Delete game
 router.delete('/delete/:id', gamesController.delete);

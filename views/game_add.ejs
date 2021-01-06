@@ -25,6 +25,7 @@
                     class="input"
                     value=<%= typeof game != 'undefined' ? game.title : '' %>
                 >
+                <small id="errorTitle" class="text-red-600"><%= typeof errors != 'undefined' && errors.title ? errors.title.msg : '' %> </small>
             </div>
 
             <div class="form-group">
@@ -46,15 +47,18 @@
                     rows="10" 
                     class="input"
                 ><%= typeof game != 'undefined' ? game.description : '' %></textarea>
+                <small id="errorTitle" class="text-red-600"><%= typeof errors != 'undefined' && errors.description ? errors.description.msg : '' %> </small>
             </div>
             <div class="form-group">
-                <label for="price">Price</label>
+                <label for="number">Price</label>
                 <input 
                     type="text" 
                     name="price"
                     class="input"
                     value=<%= typeof game != 'undefined' ? game.price : '' %>
                 >
+                <small id="errorTitle" class="text-red-600"><%= typeof errors != 'undefined' && errors.price ? errors.price.msg : '' %> </small>
+
             </div>
             <div class="form-group">
                 <label for="release">Release</label>
@@ -64,6 +68,8 @@
                     class="input"
                     value=<%= typeof game != 'undefined' ? game.release : '' %>
                 >
+                <small id="errorTitle" class="text-red-600"><%= typeof errors != 'undefined' && errors.release ? errors.release.msg : '' %> </small>
+
             </div>
             <div class="form-group">
                 <label for="stock">Stock</label>
@@ -73,6 +79,8 @@
                     class="input"
                     value=<%= typeof game != 'undefined' ? game.stock : '' %>
                 >
+                <small id="errorTitle" class="text-red-600"><%= typeof errors != 'undefined' && errors.stock ? errors.stock.msg : '' %> </small>
+
             </div>
             <div class="form-group">
                 <label for="developer">Developer</label>
@@ -81,7 +89,6 @@
                         <!-- When updating game, show current developer selected -->
                         <option 
                             value= <%= developer._id %>
-                            <%= (typeof game != 'undefined' && developer._id.toString() === game.developer._id.toString()) ? 'selected' : '' %>  
                         >
                             <%= developer.name %>
                         </option>
@@ -98,9 +105,6 @@
                         id="<%= genre.name %>" 
                         name="genre" 
                         value="<%= genre._id %>"
-                        <% if (typeof game != 'undefined')  {%>  
-                            <%= game.genre.includes(genre._id) ? 'checked' : '' %> 
-                        <% } %> 
                     >
                     <label for="<%= genre.name %>"><%= genre.name %></label>
                 <% }) %>

@@ -2,6 +2,8 @@ const Game = require("../models/game");
 const Genre = require("../models/genre");
 const Developer = require("../models/developer");
 const mongoose = require("mongoose");
+const { validationResult } = require("express-validator");
+const fs = require('fs')
 
 module.exports = {
     index: async (req, res, next) => {
@@ -37,6 +39,45 @@ module.exports = {
         })
     },
     add_post: (req, res) => {
+        let errors = validationResult(req);
+
+        // If there are errors then re render the add page
+        if(!errors.isEmpty()) {
+            errors = errors.mapped();
+
+            const developers = Developer.find().sort('name');
+            const genres = Genre.find().sort('name');
+
+            // Delete image if uploaded
+            // if(req.files[0]) {
+            //     fs.unlink(req.files[0].filename, function(err) {
+            //         if(err) throw err;
+
+            //         console.log('File deleted')
+            //     })
+            // }
+
+            // Save the values to show in the re render of the form
+            const game = {
+                title: req.body.title,
+                description: req.body.description,
+                price: Number(req.body.price),
+                release: req.body.release,
+                stock: Number(req.body.stock),
+            }
+
+            return Promise.all([developers, genres])
+            .then((data) => {
+                res.render('game_add', {
+                    title: 'Add New Game',
+                    developers: data[0],
+                    genres: data[1],
+                    game,
+                    errors
+                })
+            })
+
+        }
 
         const game = new Game({
             title: req.body.title,
