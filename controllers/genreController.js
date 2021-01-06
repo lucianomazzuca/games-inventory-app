@@ -1,5 +1,6 @@
 const Genre = require('../models/genre');
 const Game = require('../models/game');
+const { body, validationResult } = require('express-validator')
 
 module.exports = {
     index: async (req, res) => {
@@ -25,6 +26,17 @@ module.exports = {
         })
     },
     add_post: async (req, res) => {
+        let errors = validationResult(req);
+
+        if(!errors.isEmpty()) {
+            errors = errors.array();
+            return res.render('genre_add', {
+                title: 'Add New Genre',
+                errors
+            })
+        }
+
+        
         let genre = new Genre({
             name: req.body.name
         })
@@ -43,12 +55,23 @@ module.exports = {
         
     },
     update_put: async (req, res) => {
+        let errors = validationResult(req);
         let genre = await Genre.findById(req.params.id);
+        
+        if(!errors.isEmpty()) {
+            errors = errors.array()
+            return res.render('genre_update', {
+                title: 'Update Genre',
+                genre,
+                errors
+            })
+        } 
+        
         genre.name = req.body.name,
 
         await genre.save();
 
-        res.redirect('/genres')
+        res.redirect(genre.url)
     },
     delete: async (req, res) => {
         await Genre.findByIdAndDelete(req.params.id);

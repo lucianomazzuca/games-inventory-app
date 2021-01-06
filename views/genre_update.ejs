@@ -16,6 +16,7 @@
           <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" value="<%= genre.name %>" class="input">
+              <small class="text-red-600" id="errorName"><%= typeof errors != 'undefined' ? errors[0].msg : '' %> </small>
           </div>
   
           <button type="submit" class="btn bg-green-500 hover:bg-green-600 mt-4">Submit</button>

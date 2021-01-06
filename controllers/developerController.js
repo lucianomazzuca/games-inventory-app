@@ -1,6 +1,8 @@
 const Developer = require('../models/developer');
 const Game = require('../models/game');
 
+const { body, validationResult } = require('express-validator');
+
 module.exports = {
     index: async (req, res) => {
         const developers = await Developer.find();
@@ -15,6 +17,15 @@ module.exports = {
         })
     },
     add_post: async (req, res) => {
+        let errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            errors = errors.array()
+            return res.render('developer_add', {
+                title: 'Add New Developer',
+                errors
+            })
+        } 
+
         let developer = new Developer({
             name: req.body.name,
         });
@@ -43,7 +54,18 @@ module.exports = {
         })
     },
     update_put: async (req, res) => {
+        let errors = validationResult(req);
         let developer = await Developer.findById(req.params.id);
+
+        if(!errors.isEmpty()) {
+            errors = errors.array()
+            return res.render('developer_update', {
+                title: 'Update Developer',
+                developer,
+                errors
+            })
+        } 
+        
 
         developer.name = req.body.name,
         await developer.save();
