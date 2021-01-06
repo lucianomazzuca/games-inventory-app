@@ -42,11 +42,11 @@ module.exports = {
             title: req.body.title,
             description: req.body.description,
             price: Number(req.body.price),
-            release: Number(req.body.release),
+            release: req.body.release,
             stock: Number(req.body.stock),
             developer: req.body.developer,
             genre: req.body.genre,
-            image: req.files[0].filename
+            image: req.files[0] ? req.files[0].filename : 'default.jpg'
         })
 
         game.save(function(err) {
@@ -77,7 +77,7 @@ module.exports = {
         game.title = req.body.title 
         game.description = req.body.description 
         game.price = Number(req.body.price)
-        game.release = Number(req.body.release)
+        game.release = req.body.release
         game.stock = Number(req.body.stock)
         game.developer = req.body.developer 
         game.genre = req.body.genre 

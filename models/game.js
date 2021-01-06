@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { DateTime } = require('luxon');
 
 // Schema
 const gameSchema = new Schema({
@@ -16,7 +17,7 @@ const gameSchema = new Schema({
         required: true
     },
     release: {
-        type: Number,
+        type: Date,
         required: true
     },
     stock: {
@@ -41,6 +42,10 @@ const gameSchema = new Schema({
 // Virtuals
 gameSchema.virtual('url').get(function() {
     return `/games/${this._id}`
+})
+
+gameSchema.virtual('release_formatted').get(function() {
+    return DateTime.fromJSDate(this.release).toUTC().toLocaleString(DateTime.DATE_SHORT);
 })
 
 // Model
