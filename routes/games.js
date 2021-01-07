@@ -39,7 +39,7 @@ router.post('/add', upload.any(), gameValidator, gamesController.add_post);
 
 // Update game
 router.get('/update/:id', gamesController.update_get);
-router.put('/update/:id', gameValidator, upload.any(), gamesController.update_put);
+router.put('/update/:id', upload.any(), gameValidator, gamesController.update_put);
 
 // Delete game
 router.delete('/delete/:id', gamesController.delete);

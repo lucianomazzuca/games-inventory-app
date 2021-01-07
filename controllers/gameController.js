@@ -109,11 +109,32 @@ module.exports = {
                 developers: data[1],
                 genres: data[2]
             })
-        
         })
     },
     update_put: async (req, res) => {
-        // Find game by id and update each attribute
+        
+        let errors = validationResult(req);
+
+        // If there are errors in validator re render the form
+        if(!errors.isEmpty()){ 
+            const game = Game.findById(req.params.id)
+            const developers = Developer.find().sort('name');
+            const genres = Genre.find().sort('name');
+
+            return Promise.all([game, developers, genres])
+            .then((data) => {
+                    res.render('game_update', {
+                    title: 'Update Game',
+                    game: data[0],
+                    developers: data[1],
+                    genres: data[2],
+                    errors: errors.mapped()
+                })
+            })     
+        }
+
+        
+        // Find game and update each attribute
         let game = await Game.findById(req.params.id)
         game.title = req.body.title 
         game.description = req.body.description 
