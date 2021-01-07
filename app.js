@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const connectDB = require('./connectDB');
 const methodOverride = require('method-override')
-
+const compression = require('compression')
+const helmet = require('helmet');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,6 +15,8 @@ const developersRouter = require('./routes/developers');
 const genresRouter = require('./routes/genres');
 
 var app = express();
+
+app.use(compression()); // Compress all routes
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -133,7 +133,6 @@ module.exports = {
             })     
         }
 
-        
         // Find game and update each attribute
         let game = await Game.findById(req.params.id)
         game.title = req.body.title 
