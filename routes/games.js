@@ -13,7 +13,20 @@ var storage = multer.diskStorage({
     }
   })
    
-var upload = multer({ storage: storage })
+var upload = multer({ 
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype === "image/png" ||
+      file.mimetype === "image/jpg" ||
+      file.mimetype === "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(new Error("File format should be PNG,JPG,JPEG"), false); // if validation failed then generate error
+    }
+  }
+ })
 
 const gamesController = require('../controllers/gameController');
 

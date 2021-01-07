@@ -2,13 +2,13 @@ const { body, check, validationResult } = require('express-validator');
 
 module.exports = [
     body("title")
-        .notEmpty().withMessage('You have to enter a title'),
+        .trim().notEmpty().withMessage('You have to enter a title'),
 
     body("description")
-        .notEmpty().withMessage('You have to enter a description'),
+        .trim().notEmpty().withMessage('You have to enter a description'),
 
     body("price")
-        .notEmpty().withMessage('You have to enter a price')
+        .trim().notEmpty().withMessage('You have to enter a price')
         .isInt().withMessage('The price has to be a number'),
 
     body("release")
@@ -16,5 +16,4 @@ module.exports = [
 
     body('stock')
         .isInt().withMessage('The stock has to be a number')
-
 ]
