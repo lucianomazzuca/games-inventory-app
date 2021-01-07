@@ -6,7 +6,7 @@ module.exports = {
       require('postcss-import'),
       require('tailwindcss'),
       require('autoprefixer'),
-      purgecss({
+      process.env.NODE_ENV==="production" && purgecss({
         content: [
           './views/**/*.ejs',
           './public/**/javascripts/*.js'
