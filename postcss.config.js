@@ -6,12 +6,12 @@ module.exports = {
       require('postcss-import'),
       require('tailwindcss'),
       require('autoprefixer'),
-      // purgecss({
-      //   content: [
-      //     './views/**/*.ejs',
-      //     './public/**/javascripts/*.js'
-      //   ],
-      //   defaultExtractor: content => content.match(/[A-Za-z0-9-_:]+/g) || []
-      // })
+      purgecss({
+        content: [
+          './views/**/*.ejs',
+          './public/**/javascripts/*.js'
+        ],
+        defaultExtractor: content => content.match(/[A-Za-z0-9-_:]+/g) || []
+      })
     ]
   }
