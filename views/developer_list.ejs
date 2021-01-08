@@ -4,7 +4,7 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/tailwind.css' />
   </head>
-  <body>
+  <body class="bg-gray-100 min-h-screen">
 
     <%- include('partials/nav'); %>   
     
@@ -24,10 +24,9 @@
               <li><a href="<%= developer.url %>"><%= developer.name %></a></li>
           <% }) %>
       </ul>
-
-      
-  
     </div>
+    
+    <%- include('partials/footer') %> 
 
   </body>
 </html>
