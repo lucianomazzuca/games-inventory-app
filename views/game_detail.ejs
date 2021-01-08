@@ -5,11 +5,11 @@
     <link rel='stylesheet' href='/stylesheets/tailwind.css' />
     
   </head>
-  <body class="bg-gray-100 min-h-screen">
+  <body class="body">
 
     <%- include('partials/nav'); %>   
 
-    <div class="wrapper bg-white shadow min-h-screen">
+    <main class="wrapper flex-grow bg-white shadow">
       <h1 class="title mb-2"><%- title %></h1>
 
       <div class="grid grid-cols-3 gap-4">
@@ -75,8 +75,18 @@
         </form>
       </div>
 
-    </div>
+    </main>
 
+    <footer class="bg-gray-900 py-4 h-18 w-full">
+      <a href="https://github.com/lucianomazzuca" target="_blank" class="">
+        <div class="wrapper flex items-center justify-end h-full hover:text-indigo-500 m">
+          <img src="/images/github-logo.png" alt="" class="h-full">
+          <span class="text-white ml-4 text-lg">lucianomazzuca</span>
+        </div>
+      </a>
+  </footer>
+  
+  <script src="/javascripts/dropdown.js"></script>
 
   </body>
 </html>

@@ -4,7 +4,7 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/tailwind.css' />
   </head>
-  <body>
+  <body class="body">
 
     <%- include('partials/nav'); %>   
 
@@ -115,6 +115,8 @@
             <button type="submit" class="btn bg-green-500 hover:bg-green-600 mt-4">Submit</button>
         </form>
     </div>
+
+    <%- include('partials/footer') %> 
 
   </body>
 </html>

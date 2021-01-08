@@ -4,11 +4,11 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/tailwind.css' />
   </head>
-  <body class="bg-gray-100">
+  <body class="bg-gray-100 flex flex-col min-h-screen">
 
     <%- include('partials/nav'); %>   
 
-    <main class="wrapper">
+    <main class="wrapper flex-grow mb-8">
 
       <h1 class="title"><%= title %></h1>
 
@@ -31,10 +31,10 @@
                 <img src="/images/games/default.jpg" alt="" srcset="" class="w-full h-60">
               <% } %> 
               <div class="px-4 py-2 flex flex-col justify-evenly h-40">
-                  <span class="font-semibold text-lg h-10 flex-auto"><%= game.title %></span>
-                  <span class="text-lg flex-auto">$<%= game.price %></span>
+                  <span class="font-semibold text-gray-900 text-lg h-10 flex-auto leading-5"><%= game.title %></span>
+                  <span class="text-lg flex-auto justify-self-center font-semibold text-gray-600">$<%= game.price %></span>
                   <div class=" justify-self-end flex-auto">
-                      <a href="<%= game.url %>" class="bg-indigo-500 text-white rounded px-4 py-2 hover:bg-indigo-400">Details</a>
+                      <a href="<%= game.url %>" class="block text-center bg-indigo-500 text-white rounded px-4 py-2 hover:bg-indigo-400">Details</a>
                   </div>
               </div>
           </div>
@@ -44,16 +44,11 @@
       
   </main>
   
-  <footer class="bg-gray-900 mt-8 py-4 h-20">
-    <a href="https://github.com/lucianomazzuca" target="_blank" class="">
-      <div class="wrapper flex items-center h-full hover:text-indigo-500">
-        <img src="/images/github-logo.png" alt="" class="h-full">
-        <span class="text-white ml-4 text-lg">lucianomazzuca</span>
-      </div>
-    </a>
-  </footer>
+
 
   <script src="javascripts/dropdown.js"></script>
+
+  <%- include('partials/footer') %> 
   
   </body>
 </html>

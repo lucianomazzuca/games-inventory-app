@@ -9,6 +9,10 @@
     @apply container mx-auto px-4 lg:max-w-screen-lg
 }
 
+.body {
+    @apply bg-gray-100 flex flex-col min-h-screen
+}
+
 .btn {
     @apply text-white rounded px-3 py-1
 }

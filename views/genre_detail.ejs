@@ -4,11 +4,11 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/tailwind.css'/>
   </head>
-  <body>
+  <body class="body">
 
     <%- include('partials/nav'); %>   
     
-    <div class="wrapper">
+    <main class="wrapper flex-grow">
       <h1 class="title"><%= title %></h1>
       
       <div class="flex space-x-5">
@@ -44,8 +44,9 @@
 
       </div>
   
-    </div>
+    </main>
     
+    <%- include('partials/footer') %> 
     
   </body>
 </html>
