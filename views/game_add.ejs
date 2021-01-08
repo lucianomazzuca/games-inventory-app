@@ -66,6 +66,7 @@
                     type="date" 
                     name="release"
                     class="input"
+                    format={'YYYY/DD/MM'}
                     value=<%= typeof game != 'undefined' ? game.release : '' %>
                 >
                 <small id="errorTitle" class="text-red-600"><%= typeof errors != 'undefined' && errors.release ? errors.release.msg : '' %> </small>

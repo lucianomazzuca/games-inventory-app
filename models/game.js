@@ -45,7 +45,7 @@ gameSchema.virtual('url').get(function() {
 })
 
 gameSchema.virtual('release_formatted').get(function() {
-    return DateTime.fromJSDate(this.release).toUTC().toLocaleString(DateTime.DATE_SHORT);
+    return DateTime.fromJSDate(this.release).toUTC().toISODate();
 })
 
 // Model
