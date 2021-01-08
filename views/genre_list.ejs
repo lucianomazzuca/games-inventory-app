@@ -19,9 +19,9 @@
         </div>
       </a>
       
-      <ul>
+      <ul class="">
         <% genres.forEach(genres => { %>
-          <li><a href="<%= genres.url %>"><%= genres.name %></a></li>
+          <li class="text-lg list-disc list-inside hover:underline"><a href="<%= genres.url %>"><%= genres.name %></a></li>
       <% }) %>
       </ul>
   
