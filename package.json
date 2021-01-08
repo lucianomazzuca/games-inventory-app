@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "postcss public/stylesheets/style.css --output public/stylesheets/tailwind.css",
+    "build:css": "postcss public/stylesheets/style.css --output public/stylesheets/tailwind.css",
     "dev": "build & nodemon ./bin/www"
   },
   "dependencies": {
