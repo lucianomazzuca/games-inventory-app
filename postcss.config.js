@@ -1,6 +1,7 @@
 // postcss.config.js
 const purgecss = require('@fullhuman/postcss-purgecss')
 
+if(process.env.NODE_ENV === 'production') {
 module.exports = {
     plugins: [
       require('postcss-import'),
@@ -15,3 +16,4 @@ module.exports = {
       })
     ]
   }
+}
