@@ -4,6 +4,7 @@ const Developer = require("../models/developer");
 const mongoose = require("mongoose");
 const { validationResult } = require("express-validator");
 const fs = require('fs')
+const path = require('path')
 
 module.exports = {
     index: async (req, res, next) => {
@@ -49,13 +50,14 @@ module.exports = {
             const genres = Genre.find().sort('name');
 
             // Delete image if uploaded
-            // if(req.files[0]) {
-            //     fs.unlink(req.files[0].filename, function(err) {
-            //         if(err) throw err;
+            if(req.files[0]) {
+                const pathImg = 'public/images/games/' + req.files[0].filename
+                fs.unlink(pathImg, function(err) {
+                    if (err) console.log(err);
 
-            //         console.log('File deleted')
-            //     })
-            // }
+                    console.log('Previous game img deleted')
+                });
+            }
 
             // Save the values to show in the re render of the form
             const game = {
@@ -142,7 +144,17 @@ module.exports = {
         game.stock = Number(req.body.stock)
         game.developer = req.body.developer 
         game.genre = req.body.genre 
-        game.image = req.files[0] ? req.files[0].filename : game.image
+
+        // If image was updated, delete previous one
+        if(req.files[0]) {
+            const pathImg = 'public/images/games/' + game.image
+            fs.unlink(pathImg, function(err) {
+                if (err) console.log(err);
+
+                console.log('todo bien')
+            });
+            game.image = req.files[0].filename;
+        } 
 
         game.save(function(err) {
             if (err) console.log(err)
@@ -150,7 +162,20 @@ module.exports = {
             res.redirect('/games/' + game._id)
         })
     },
-    delete: (req, res) => {
+    delete: async (req, res) => {
+        const game = await Game.findById(req.params.id);
+
+        // If game has an image, delete it
+        if(game.image != 'default.png') {
+            const pathImg = 'public/images/games/' + game.image
+            fs.unlink(pathImg, function(err) {
+                if (err) console.log(err);
+
+                console.log('todo bien')
+            });
+        }
+        
+        // Delete game
         Game.findByIdAndDelete(req.params.id)
         .then((result) => {
             res.redirect('/games');
