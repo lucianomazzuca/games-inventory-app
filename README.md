@@ -2,6 +2,9 @@
 
 This app allows you to have an inventory of games including various details like description, price, release date, stock, and more. Includes CRUD of games, developers and genres.
 
+## Live on heroku
+[Link here](https://game-inventory-app.herokuapp.com/games)
+
 ## Screenshots
 
 ### Main Page
