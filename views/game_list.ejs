@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/tailwind.css' />
   </head>
@@ -20,7 +22,7 @@
         </div>
       </a>
 
-      <div class="grid grid-cols-fit-items gap-4">
+      <div class="grid grid-cols-2 gap-2 md:grid-cols-fit-items md:gap-4 ">
           <!-- Game Cards go here -->
 
           <% games.forEach(game => { %>
