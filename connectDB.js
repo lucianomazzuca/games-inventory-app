@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const dev_db_url = 'mongodb+srv://luciano:Qq1234@cluster0.uhbzf.mongodb.net/games?retryWrites=true&w=majority';
-const mongoDB = process.env.MONGODB_URI || dev_db_url; 
+const mongoDB = process.env.DB_URL;
 
 const connectDB = async() => {
     try {
